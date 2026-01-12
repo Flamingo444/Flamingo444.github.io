@@ -146,10 +146,10 @@ function initCTFTable() {
 
         html += `
             <tr>
-                <td>${ctf.name}</td>
-                <td><span class="team-tag">${ctf.team}</span></td>
-                <td><span class="${rankClass}">${ctf.rank}</span></td>
-                <td>${ctf.year}</td>
+                <td data-label="Event">${ctf.name}</td>
+                <td data-label="Team"><span class="team-tag">${ctf.team}</span></td>
+                <td data-label="Rank"><span class="${rankClass}">${ctf.rank}</span></td>
+                <td data-label="Year">${ctf.year}</td>
             </tr>
         `;
     });
