@@ -94,7 +94,7 @@ ul {
 
 /* Hero Section */
 .hero {
-    height: calc(100vh - var(--nav-height));
+    min-height: 85vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -102,6 +102,7 @@ ul {
     position: relative;
     overflow: hidden;
     background: radial-gradient(circle at center, rgba(0, 243, 255, 0.03) 0%, rgba(10, 10, 10, 0) 70%);
+    padding: 80px 0;
 }
 
 .hero-content {
@@ -188,7 +189,7 @@ h2 {
 
 /* General Section Styling */
 .section {
-    padding: 100px 0;
+    padding: 60px 0;
 }
 
 .container {
