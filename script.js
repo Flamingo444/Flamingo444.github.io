@@ -78,50 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
     initCTFTable();
     initReports();
     initModal();
-    initGallery();
+
 });
 
-// Gallery Pagination
-function initGallery() {
-    const galleryItems = document.querySelectorAll('#physical-gallery .gallery-item');
-    const showMoreBtn = document.getElementById('show-more-btn');
-    const itemsToShow = 6;
-    let isExpanded = false;
 
-    // Initially hide items beyond the limit
-    if (galleryItems.length > itemsToShow) {
-        galleryItems.forEach((item, index) => {
-            if (index >= itemsToShow) {
-                item.classList.add('hidden');
-            }
-        });
-    } else {
-        if (showMoreBtn) showMoreBtn.style.display = 'none'; // No button needed if few items
-    }
-
-    if (showMoreBtn) {
-        showMoreBtn.onclick = () => {
-            if (!isExpanded) {
-                // Show all
-                galleryItems.forEach(item => item.classList.remove('hidden'));
-                showMoreBtn.textContent = 'Show Less Photos';
-                isExpanded = true;
-            } else {
-                // Hide extra
-                galleryItems.forEach((item, index) => {
-                    if (index >= itemsToShow) {
-                        item.classList.add('hidden');
-                    }
-                });
-                showMoreBtn.textContent = 'Show More Photos';
-                // Scroll back to gallery top to avoid losing context
-                const section = document.getElementById('physical-sec');
-                if (section) section.scrollIntoView({ behavior: 'smooth' });
-                isExpanded = false;
-            }
-        };
-    }
-}
 
 // Render CTF Table with Team Column
 function initCTFTable() {
