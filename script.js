@@ -24,7 +24,54 @@ const ctfData = [
     { name: "NCL Fall 2023 Individual Game", team: "KSU Offensive Security Research Club", rank: "234/7934", year: "2023" }
 ];
 
-// ... (Reports Registry stays same)
+// Reports Registry - Add/Remove files here, and the site will fetch them.
+const reports = [
+    {
+        title: "Brainfkd Challenge",
+        category: "Reverse Engineering",
+        file: "reports/Brainfkd ScarletCTF2026.md"
+    },
+    {
+        title: "Miss-Input Solution",
+        category: "Web Exploitation",
+        file: "reports/Miss-Input Solution ScarletCTF2026.md"
+    },
+    {
+        title: "Girly Pop Inc",
+        category: "Web / LFI",
+        file: "reports/SWE Intern at Girly Pop Inc ScartletCTF2026.md"
+    },
+    {
+        title: "hxp Shell Decoding",
+        category: "Reverse Engineering",
+        file: "reports/hxp_shell_decoding_writeup.md"
+    },
+    {
+        title: "Matrix 500",
+        category: "Cryptography",
+        file: "reports/matrix_500_writeup.md"
+    },
+    {
+        title: "Something Feels Off",
+        category: "Forensics",
+        file: "reports/Somethingfeelsoff.md"
+    },
+    {
+        title: "Brainfast",
+        category: "Pwn",
+        file: "reports/BrainfastReportPwn.md"
+    },
+    {
+        title: "Cassandra",
+        category: "Pwn",
+        file: "reports/CassandraReportPwn.md"
+    },
+    {
+        title: "SLOT",
+        category: "Pwn",
+        file: "reports/SLOTReportPwn.md"
+    }
+];
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
