@@ -78,10 +78,44 @@ document.addEventListener('DOMContentLoaded', () => {
     initCTFTable();
     initReports();
     initModal();
-
+    initGallery();
 });
 
+// Gallery Pagination - Show first 6 images, button to show more
+function initGallery() {
+    const galleryItems = document.querySelectorAll('#physical-gallery .gallery-item');
+    const showMoreBtn = document.getElementById('show-more-btn');
+    const itemsToShow = 6;
+    let isExpanded = false;
 
+    // Hide items beyond the first 6
+    galleryItems.forEach((item, index) => {
+        if (index >= itemsToShow) {
+            item.classList.add('hidden');
+        }
+    });
+
+    // Button click handler
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            if (!isExpanded) {
+                // Show all images
+                galleryItems.forEach(item => item.classList.remove('hidden'));
+                showMoreBtn.textContent = 'Show Less Photos';
+                isExpanded = true;
+            } else {
+                // Hide extra images
+                galleryItems.forEach((item, index) => {
+                    if (index >= itemsToShow) {
+                        item.classList.add('hidden');
+                    }
+                });
+                showMoreBtn.textContent = 'Show More Photos';
+                isExpanded = false;
+            }
+        });
+    }
+}
 
 // Render CTF Table with Team Column
 function initCTFTable() {
