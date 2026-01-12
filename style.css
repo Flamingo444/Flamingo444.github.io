@@ -472,6 +472,16 @@ h2 {
     border: 1px solid rgba(248, 197, 20, 0.2);
 }
 
+.ctf-hidden {
+    display: none !important;
+}
+
+.ctf-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
 /* Reports */
 .reports-grid {
     display: grid;
@@ -724,6 +734,29 @@ footer {
 
     .mobile-menu-btn {
         display: block;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    /* Mobile Menu Open State */
+    .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: var(--bg-dark);
+        padding: 20px;
+        gap: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-links.mobile-open a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .hero {

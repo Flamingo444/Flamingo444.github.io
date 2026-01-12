@@ -79,7 +79,38 @@ document.addEventListener('DOMContentLoaded', () => {
     initReports();
     initModal();
     initGallery();
+    initMobileMenu();
 });
+
+// Mobile Menu Toggle
+function initMobileMenu() {
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('mobile-open');
+            // Toggle icon between bars and X
+            const icon = menuBtn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                const icon = menuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
+}
 
 // Gallery Pagination - Show first 6 images, button to show more
 function initGallery() {
@@ -120,7 +151,9 @@ function initGallery() {
 // Render CTF Table with Team Column
 function initCTFTable() {
     const tbody = document.getElementById('ctf-list-body');
+    const showMoreBtn = document.getElementById('ctf-show-more-btn');
     let html = '';
+    let isExpanded = false;
 
     ctfData.forEach(ctf => {
         let rankClass = 'rank-badge';
@@ -144,8 +177,12 @@ function initCTFTable() {
             rankClass += ' rank-top-10'; // Yellow
         }
 
+        // Hide pre-2025 entries initially
+        const yearNum = parseInt(ctf.year);
+        const hiddenClass = yearNum < 2025 ? 'ctf-hidden' : '';
+
         html += `
-            <tr>
+            <tr class="${hiddenClass}">
                 <td data-label="Event">${ctf.name}</td>
                 <td data-label="Team"><span class="team-tag">${ctf.team}</span></td>
                 <td data-label="Rank"><span class="${rankClass}">${ctf.rank}</span></td>
@@ -155,6 +192,27 @@ function initCTFTable() {
     });
 
     tbody.innerHTML = html;
+
+    // Show More button handler for CTF
+    if (showMoreBtn) {
+        showMoreBtn.addEventListener('click', () => {
+            const hiddenRows = tbody.querySelectorAll('.ctf-hidden');
+            if (!isExpanded) {
+                hiddenRows.forEach(row => row.classList.remove('ctf-hidden'));
+                showMoreBtn.textContent = 'Show Less';
+                isExpanded = true;
+            } else {
+                ctfData.forEach((ctf, index) => {
+                    if (parseInt(ctf.year) < 2025) {
+                        const row = tbody.querySelectorAll('tr')[index];
+                        if (row) row.classList.add('ctf-hidden');
+                    }
+                });
+                showMoreBtn.textContent = 'Show Earlier Placements';
+                isExpanded = false;
+            }
+        });
+    }
 }
 
 // Render Reports Grid
