@@ -329,6 +329,18 @@ h2 {
     letter-spacing: 0.5px;
 }
 
+.collaborator {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.collaborator i {
+    color: var(--accent-purple);
+    margin-right: 6px;
+}
+
 .card p {
     color: var(--text-muted);
     font-size: 0.95rem;
