@@ -1,5 +1,6 @@
 /* Data */
 const ctfData = [
+    { name: "KnightCTF 2026", team: "0xFun", rank: "1/891", year: "2026" },
     { name: "Scarlet CTF 2026", team: "OxFun", rank: "8/762", year: "2026" },
     { name: "UoFCTF 2026", team: "OxFun", rank: "22/1551", year: "2026" },
     { name: "hxp 39C3 CTF 2025", team: "OxFun", rank: "12/1337", year: "2025" },
